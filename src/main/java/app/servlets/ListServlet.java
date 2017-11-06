@@ -1,5 +1,6 @@
 package app.servlets;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ public class ListServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter writer = response.getWriter();
-        writer.println("Method GET from ListServlet");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/list.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
