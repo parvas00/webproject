@@ -21,10 +21,20 @@ public class Model {
     }
 
     public void add(User user) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         model.add(user);
     }
 
     public List<String> list() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return model.stream()
                 .map(User::getName)
                 .collect(Collectors.toList());

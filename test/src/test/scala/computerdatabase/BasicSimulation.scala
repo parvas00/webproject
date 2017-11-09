@@ -23,5 +23,10 @@ class BasicSimulation extends Simulation {
     .formParam("""name""", """123""") // Note the triple double quotes: used in Scala for protecting a whole chain of characters (no need for backslash)
     .formParam("""pass""", """123"""))
 
-  setUp(scn2.inject(atOnceUsers(1000)).protocols(httpConf))
+  setUp(scn1.inject(
+    atOnceUsers(100),
+    rampUsers(200) over(10 seconds),
+    constantUsersPerSec(200) during(10 seconds),
+    atOnceUsers(100)
+  ).protocols(httpConf))
 }
